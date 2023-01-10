@@ -1,11 +1,12 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import { DocumentData } from 'firebase/firestore';
 import { useRef, useState } from 'react';
 import { Movie } from '../typings';
 import Thumbnail from './Thumbnail';
 
 interface Props {
   title: string;
-  movies: Movie[];
+  movies: Movie[] | DocumentData;
 }
 function Row({ title, movies }: Props) {
   const rowRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ function Row({ title, movies }: Props) {
           ref={rowRef}
           className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
         >
-          {movies.map((movie) => (
+          {movies.map((movie: Movie) => (
             <Thumbnail key={movie.id} movie={movie} />
           ))}
         </div>
