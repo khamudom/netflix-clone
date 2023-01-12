@@ -1,3 +1,4 @@
+import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -60,6 +61,7 @@ function Login() {
               placeholder="Email"
               className="input"
               {...register('email', { required: true })}
+              defaultValue="email@live.com"
             />
             {errors.email && (
               <p className="p-1 text-[13px] font-light  text-orange-500">
@@ -73,6 +75,7 @@ function Login() {
               placeholder="Password"
               className="input"
               {...register('password', { required: true })}
+              defaultValue="password"
             />
             {errors.password && (
               <p className="p-1 text-[13px] font-light  text-orange-500">
